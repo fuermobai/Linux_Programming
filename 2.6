@@ -1,0 +1,14 @@
+#!/bin/bash
+
+var='Hi China'
+
+echo $var  
+echo "$var" #双引号会将值进行替换
+echo '$var' #单引号不会对值进行替换
+echo \$var  #符号转义
+
+
+echo 输入一些字符
+read var #read内置命令可以读取终端输入,不需要在变量前增加#符号
+
+echo '$var' 现在和$var一样
