@@ -1,16 +1,9 @@
 #!/bin/bash
 
-echo Is it sunny day today?
-read answer
-if [ "$answer" = "yes" ]
-then
-    echo "Good morning"
-elif [ "$answer" = "no" ] 
-then
-    echo "Good afternoon"
-else
-    echo -n "$answer is not recognized." # echo -n 代表去掉本行所隐含的换行符,详见终端输出结果
-    echo Enter yes or no
-    exit 1
-fi
+echo "Password !"
+read PD
+while [ "$PD" != "secret" ]; do
+    echo "sorry"
+    read PD 
+done
 exit 0
