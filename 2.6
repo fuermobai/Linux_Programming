@@ -1,14 +1,9 @@
 #!/bin/bash
 
-var='Hi China'
-echo $var  
-echo the program\'s $0 is now running
-echo 第二个参数是$2
-echo 第一个参数是$1
-echo 参数列表是$*
-echo 家目录是$HOME
-echo 用read读取一些内容
-read var
-echo $var
-echo 脚本执行完毕
+echo Is it sunny day today?
+read answer
+if [ $answer = yes ]
+then echo you\'re right!
+else echo No!
+fi
 exit 0
