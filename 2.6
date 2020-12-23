@@ -1,14 +1,14 @@
 #!/bin/bash
 
 var='Hi China'
-
 echo $var  
-echo "$var" #双引号会将值进行替换
-echo '$var' #单引号不会对值进行替换
-echo \$var  #符号转义
-
-
-echo 输入一些字符
-read var #read内置命令可以读取终端输入,不需要在变量前增加#符号
-
-echo '$var' 现在和$var一样
+echo the program\'s $0 is now running
+echo 第二个参数是$2
+echo 第一个参数是$1
+echo 参数列表是$*
+echo 家目录是$HOME
+echo 用read读取一些内容
+read var
+echo $var
+echo 脚本执行完毕
+exit 0
