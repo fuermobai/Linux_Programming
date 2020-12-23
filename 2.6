@@ -2,8 +2,15 @@
 
 echo Is it sunny day today?
 read answer
-if [ $answer = yes ]
-then echo you\'re right!
-else echo No!
+if [ $answer = "yes" ]
+then
+    echo "Good morning"
+elif [ $answer = "no" ] 
+then
+    echo "Good afternoon"
+else
+    echo $answer is not recognized.
+    echo Enter yes or no
+    exit 1
 fi
 exit 0
