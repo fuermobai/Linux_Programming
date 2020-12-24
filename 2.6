@@ -1,11 +1,14 @@
 #!/bin/bash
 
-until who | grep "$1" > /dev/null 
-do 
-    sleep 60
-done
+# case v1.0
+echo "Is it morning?"
+read Var
 
-echo -e '\a'
-echo "**** $1 has just logged in ****"
-
+case "$Var" in
+    yes) echo "morning";;
+    no)  echo "afternoon";;
+    y)   echo "morning";;
+    n)   echo "afternoon";;
+    *)   echo "not recognized!";;
+esac
 exit 0
