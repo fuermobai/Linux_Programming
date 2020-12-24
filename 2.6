@@ -5,10 +5,8 @@ echo "Is it morning?"
 read Var
 
 case "$Var" in
-    yes) echo "morning";;
-    no)  echo "afternoon";;
-    y)   echo "morning";;
-    n)   echo "afternoon";;
-    *)   echo "not recognized!";;
+    y | yes | Y | YES ) echo "morning";;
+    n* | N* ) echo "afternoon";;
+    *) echo "not recognized!";;
 esac
 exit 0
