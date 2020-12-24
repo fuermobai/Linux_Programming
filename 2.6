@@ -1,8 +1,7 @@
 #!/bin/bash
 
-touch file_one
-rm -f file_two
-if [ -f file_one ] && echo "Hi" && [ -f file_two ] && echo "there"
+rm -f file_one
+if [ -f file_one ] || echo "Hi" || echo "there"
 then
     echo "in if"
 else 
