@@ -1,9 +1,11 @@
 #!/bin/bash
 
-echo "Password !"
-read PD
-while [ "$PD" != "secret" ]; do
-    echo "sorry"
-    read PD 
+until who | grep "$1" > /dev/null 
+do 
+    sleep 60
 done
+
+echo -e '\a'
+echo "**** $1 has just logged in ****"
+
 exit 0
