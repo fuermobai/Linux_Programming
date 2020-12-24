@@ -1,10 +1,10 @@
 #!/bin/bash
 
-rm -f file_one
-if [ -f file_one ] || echo "Hi" || echo "there"
-then
-    echo "in if"
-else 
-    echo "in else"
-fi
+foo(){
+    echo "function $0 start!"
+}
+echo "script start"
+foo
+echo "script ends"
+
 exit 0
