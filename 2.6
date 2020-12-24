@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# case v1.0
-echo "Is it morning?"
-read Var
-
-case "$Var" in
-    [yY] | [yY][eE][Ss] ) echo "morning";;
-    [nN]*               ) echo "afternoon";;
-    *                   ) echo "not recognized!"# ;;
-esac
+touch file_one
+rm -f file_two
+if [ -f file_one ] && echo "Hi" && [ -f file_two ] && echo "there"
+then
+    echo "in if"
+else 
+    echo "in else"
+fi
 exit 0
