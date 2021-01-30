@@ -31,4 +31,14 @@
 
    由图可知，ssh -T（或者-vT含有调试信息）git@Host 即可进行测试，而git@github.com默认选择第一个。
 
-4. 待补充
+4. ```bash
+   git config --global core.quotepath false
+   ```
+
+   使得git bash中中文显示正常。
+   ![image-20210130121539323](git.assets/image-20210130121539323.png)
+
+5. 
+
+   
+
