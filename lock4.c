@@ -31,29 +31,45 @@ int main(void)
 		region_to_test.l_pid = -1;
 
 		printf("Testing F_WRLCK on region from %d to %d \n",start_byte,start_byte + SIZE_TO_TRY);
+		res = fcntl(file_desc,F_GETLK,&region_to_test);
+		if(res == 1){
+		fprintf(stderr,"F_GETLK failed \n");
+		exit(EXIT_FAILURE);
+		}
+		if(region_to_test.l_pid != -1){
+		printf("Lock would fail.F_GETLK returned:\n");
+		show_lock_info(&region_to_test);
+		}
+		else{
+		printf("F_WRLCK - Lock would succeed\n");
+		}
+		region_to_test.l_type = F_RDLCK;
+		region_to_test.l_whence = SEEK_SET;
+		region_to_test.l_start = start_byte;
+		region_to_test.l_len = SIZE_TO_TRY;
+		region_to_test.l_pid = -1;	
+		printf("Testing F_RDLCK on region from %d to %d\n",start_byte,start_byte + SIZE_TO_TRY);
+		res = fcntl(file_desc,F_GETLK,&region_to_test);
+		if(res == -1){
+		fprintf(stderr,"F_GETLK failed \n");
+		exit(EXIT_FAILURE);
+		}
+		if(region_to_test.l_pid != -1 ){
+		printf("Lock would fail. F_GETLK returned:\n");
+		show_lock_info(&region_to_test);
+		}
+		else{
+		printf("F_RDLCK - Lock would succeed \n");
+		}
 	}
-
-
-	region_2.l_type = F_WRLCK;
-	region_2.l_whence = SEEK_SET;
-	region_2.l_start = 40;
-	region_2.l_len = 10;
-
-
-
-	printf("Proccess %d locking file \n ",getpid());
-	res = fcntl(file_desc,F_SETLK,&region_1);
-	if (res == -1) {
-		fprintf(stderr,"Failed to lock regin 1\n");
-	}
-	res = fcntl(file_desc,F_SETLK,&region_2);
-	if (res == -1) {
-		fprintf(stderr,"Failed to lock regin 2\n");
-	}
-
-	sleep(60);
-
-	printf("Process %d closing file \n ",getpid());
 	close(file_desc);
 	exit(EXIT_SUCCESS);
+}
+
+void show_lock_info(struct flock *to_show){
+	printf("\tl_type %d, ",to_show->l_type);
+	printf("l_whence %d, ",to_show->l_whence);
+	printf("l_start %ld, ",to_show->l_start);
+	printf("l_len %ld, ",to_show->l_len);
+	printf("l_pid %d\n, ",to_show->l_pid);
 }
