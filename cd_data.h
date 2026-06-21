@@ -26,7 +26,7 @@ void database_close(void);
 
 // 数据检索
 cdc_entry get_cdc_entry(const char *cd_datalog_ptr);
-cdc_entry get_cdc_entry(const char *cd_datalog_ptr,const int track_no);
+cdt_entry get_cdt_entry(const char *cd_datalog_ptr,const int track_no);
 
 // 数据增加
 int add_cdc_entry(const cdc_entry entry_to_add);
