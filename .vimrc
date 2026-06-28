@@ -113,7 +113,8 @@ endfunction
 " 设置行号
 set nu
 colorscheme default
-
+" 设置vim底部显示当前编辑文件全路径
+set statusline=%F
 " ————————— 代码折叠配置——————————————
 nnoremap <space> za 
 set foldenable
