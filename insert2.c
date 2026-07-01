@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <mysql/mysql.h>
 
+MYSQL my_connection;
+MYSQL_RES *res_ptr;
+MYSQL_ROW sqlrow;
 int main(int argc, char *argv[])
 {
-    MYSQL my_connection;
-    MYSQL_RES *res_ptr;
-    MYSQL_ROW sqlrow;
     int res;
 
     mysql_init(&my_connection);
