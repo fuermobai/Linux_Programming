@@ -112,6 +112,8 @@ endfunction
 "                          author: Q
 " 设置行号
 set nu
+" 设置编辑行与底部保持固定距离 8 
+set scrolloff=64
 colorscheme default
 " 设置vim底部显示当前编辑文件全路径
 set statusline=%F
@@ -144,8 +146,10 @@ highlight! PmenuSel ctermbg=140 guibg=#87ceeb
 highlight! PmenuSbar ctermbg=red guibg=#87ceeb
 highlight CocMenuSel ctermbg=magenta
 " 设置光标所在行颜色
-" set cursorline
-" highlight CursorLine ctermbg=25
+set cursorline
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
+highlight CursorLine ctermbg=25
 "
 " 插入模式：闪烁的方块
 let &t_SI = "\e[1 q"
@@ -154,7 +158,9 @@ let &t_SR = "\e[1 q"
 " 普通模式：闪烁的方块（可选，便于区分模式）
 let &t_EI = "\e[1 q"
 
-
+"
+" 
+"
 " ==================== 统一 Tab/Shift-Tab 智能映射 ====================
 " 功能：
 "   补全菜单弹出时：Tab/Shift+Tab 上下循环选择
